@@ -3,12 +3,13 @@ package com.example.todomvvmkotolin
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todomvvmkotolin.model.TodoItem
 import com.example.todomvvmkotolin.viewmodel.TodoListFragmentViewModel
 import io.realm.RealmRecyclerViewAdapter
+import com.example.todomvvmkotolin.databinding.TodoItemFragmentBinding
+
 
 private const val TAG = "TodoItemAdapter"
 

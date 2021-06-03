@@ -49,7 +49,7 @@ class TodoItemDetailFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         Log.d(TAG, "called onActivityCreated")
         
-        binding.buttonRight,setOnClickListener {
+        binding.buttonRight.setOnClickListener {
             closeFragment()
         }
         

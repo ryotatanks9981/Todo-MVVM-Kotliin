@@ -11,6 +11,7 @@ import android.widget.AdapterView
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.todomvvmkotolin.R
+import com.example.todomvvmkotolin.TodoItemAdapter
 import com.example.todomvvmkotolin.model.TodoItem
 import com.example.todomvvmkotolin.viewmodel.MainActivityViewModel
 import com.example.todomvvmkotolin.viewmodel.TodoListFragmentViewModel
@@ -76,7 +77,7 @@ class TodoListFragment : Fragment() {
         })
 
         //Todoitemを長押しした時は、TodoItemを削除する
-        adapter.setOnItemClickListener(todoItem: TodoItemAdapter.OnLongItemClickListener {
+        adapter.setOnItemClickListener(object: TodoItemAdapter.OnLongItemClickListener {
             override fun onLongItemClickListener(todoItem: TodoItem, position: Int): Boolean {
                 Log.d(TAG, "called onLongItemClickListener")
                 todoListFragmentViewModel.deleteTask(todoItem)
