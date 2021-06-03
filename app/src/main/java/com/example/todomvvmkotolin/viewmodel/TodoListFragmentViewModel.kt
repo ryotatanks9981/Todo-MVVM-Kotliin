@@ -26,6 +26,7 @@ class TodoListFragmentViewModel: ViewModel() {
         data = (todoItems as RealmResults<TodoItem>?)!!
     }
 
+    // 完了済みタスクは未完了に、未完了タスクは完了済みに変更する
     fun isDoneStateChange(id: Long) {
         realm.executeTransaction { db: Realm ->
             val todoItem = db.where<TodoItem>()
@@ -33,4 +34,19 @@ class TodoListFragmentViewModel: ViewModel() {
             todoItem?.isDone = !todoItem?.isDone!!
         }
     }
+
+    fun deleteTask(todoItem: TodoItem) {
+        realm.executeTransaction { db: Realm ->
+            val todoItem = db.where<TodoItem>()
+                .equalTo("id", todoItem.id)
+                .findFirst()
+                ?.deleteFromRealm()
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        realm.close()
+    }
+
 }
